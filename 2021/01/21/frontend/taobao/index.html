@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Alex的博客，记录生活、工作中的点点滴滴，记录代码生涯沿途的风景。">
+    <meta name="keyword"  content="博客,前端,全栈">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        npm各种常用配置 - Alex的博客 | Alex&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script data-ad-client="ca-pub-5905321050599350" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53J9XSJ7ZF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-53J9XSJ7ZF');
+    </script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Alex</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-下载依赖慢，老是网络中断怎么办？（registry配置）"><span class="toc-text">1. 下载依赖慢，老是网络中断怎么办？（registry配置）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-设置别名"><span class="toc-text">2. 设置别名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-通过npm安装yarn"><span class="toc-text">3. 通过npm安装yarn</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+
+        <div class="index-about">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        npm各种常用配置
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-01-21 00:09:28</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#npm" title="npm">npm</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>在日常前端开发过程中npm，可以说是我们最常用的包管理器。而其中配置，并不少所有小伙伴都了解的，下边我们介绍下一些最常用的。</p>
+<h2 id="1-下载依赖慢，老是网络中断怎么办？（registry配置）"><a href="#1-下载依赖慢，老是网络中断怎么办？（registry配置）" class="headerlink" title="1. 下载依赖慢，老是网络中断怎么办？（registry配置）"></a>1. 下载依赖慢，老是网络中断怎么办？（registry配置）</h2><p>例如我在命令行中，输入</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="built_in">npm</span> config list</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>系统输出</span><br><span class="line">alex@AlexdeMacBook-Pro blog % <span class="built_in">npm</span> config list</span><br><span class="line">; <span class="string">"user"</span> config <span class="keyword">from</span> <span class="regexp">/Users/xxx/</span>.npmrc</span><br><span class="line"></span><br><span class="line">registry = <span class="string">"https://registry.npm.taobao.org/"</span> </span><br><span class="line"></span><br><span class="line">……</span><br></pre></td></tr></table></figure>
+<p>在上边 <code>registry = &quot;https://registry.npm.taobao.org/&quot;</code> 代表我设置了淘宝的registry仓库。</p>
+<blockquote>
+<p>npm 默认设置是它的官方库 <a href="http://registry.npmjs.org" target="_blank" rel="noopener">http://registry.npmjs.org</a> ，这个大家如果涉及插件开发，都会往这上边传，后续再细说。淘宝的仓库其实也源于npm官方仓库，只不过它会即时去拉取，和使用官方库差不多。</p>
+</blockquote>
+<p>我们通常使用以下命令行去设置仓库指向，</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置成淘宝库</span></span><br><span class="line">npm config <span class="keyword">set</span> registry <span class="comment">https:</span>//<span class="comment">registry.npm.taobao.org</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置回npm仓库</span></span><br><span class="line">npm <span class="comment">config set registry http:</span>//<span class="comment">registry.npmjs.org</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-设置别名"><a href="#2-设置别名" class="headerlink" title="2. 设置别名"></a>2. 设置别名</h2><p>如果你们公司有，nexus私有npm仓库,你们开发的插件需要存在里边，不推送到公网。那么,可以给你的所有操作，加上 <code>--registry</code> 后带仓库地址。</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/<span class="regexp">/登录</span></span><br><span class="line"><span class="regexp">npm login --registry http:/</span><span class="regexp">/nexus.x.x/repository</span><span class="regexp">/npm-hosted/</span></span><br><span class="line"></span><br><span class="line">/<span class="regexp">/发布</span></span><br><span class="line"><span class="regexp">npm publish --registry http:/</span><span class="regexp">/nexus.x.x/repository</span><span class="regexp">/npm-hosted/</span></span><br></pre></td></tr></table></figure>
+<p>通常情况下，我们同时也想使用公有淘宝or npm 镜像，可以做以下配置。</p>
+<p>我们的插件以@yzy为组，设置特殊组插件使用私有镜像库。</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span>设置@yzy组的registry到私有库</span><br><span class="line"><span class="built_in">npm</span> config set @yzy:registry http:<span class="regexp">//</span>nexus.x.x<span class="regexp">/repository/npm-hosted/</span></span><br></pre></td></tr></table></figure>
+<p>只要包带 <code>@yzy</code>的，都会去 <code>http://nexus.x.x/repository/npm-hosted/</code> 下载</p>
+<h2 id="3-通过npm安装yarn"><a href="#3-通过npm安装yarn" class="headerlink" title="3. 通过npm安装yarn"></a>3. 通过npm安装yarn</h2><p>如果npm使用烦了，可以偶尔使用下yarn</p>
+<p>按照指令</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="selector-tag">i</span> yarn -g</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>npm是牛b的，这个命令翻译下就是：我（npm）允许你选择我的潜在对手（yarn），甚至我还帮你引荐！</p>
+</blockquote>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">请我喝杯咖啡？</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+        
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/yue-zi-yao">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/yueziyao">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://weekly.75.team/">奇舞周刊</a></span>
+        <span>/</span>
+        
+        <span><a href="https://developer.mozilla.org/">MDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.csdn.net/">CSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+    </div>
+</div>
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-yueziyao-github-io.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

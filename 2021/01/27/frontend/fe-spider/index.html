@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Alex的博客，记录生活、工作中的点点滴滴，记录代码生涯沿途的风景。">
+    <meta name="keyword"  content="博客,前端,全栈">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        前端性能爬虫方案 - Alex的博客 | Alex&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script data-ad-client="ca-pub-5905321050599350" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53J9XSJ7ZF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-53J9XSJ7ZF');
+    </script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Alex</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+
+        <div class="index-about">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        前端性能爬虫方案
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-01-27 23:29:00</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#前端" title="前端">前端</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#性能优化" title="性能优化">性能优化</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>性能爬虫，我也是刚接触到这个词，发现这篇文章，mark一下</p>
+<p><a href="https://www.zoo.team/article/performance-detection" target="_blank" rel="noopener">https://www.zoo.team/article/performance-detection</a><br><a href="https://juejin.cn/post/6844903933580673032#heading-5" target="_blank" rel="noopener">https://juejin.cn/post/6844903933580673032#heading-5</a><br><a href="https://segmentfault.com/a/1190000020539159" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020539159</a></p>
+<p>是不是我看得不仔细，这三篇文章写一个东西，都不太一样。</p>
+<p>可以结合前端性能、优化，一起看看。学习！</p>
+<p>puppeteer使用cnpm安装</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> install -g cnpm --registry=https:<span class="regexp">//</span>registry.<span class="built_in">npm</span>.taobao.org</span><br></pre></td></tr></table></figure>
+<p>main.ts</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;performanceTest&#125; <span class="keyword">from</span> <span class="string">'./performanceTest'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 检测页面url</span></span><br><span class="line">    <span class="keyword">const</span> url = <span class="string">'https://www.baidu.com'</span>;</span><br><span class="line">    <span class="comment">// 检测次数</span></span><br><span class="line">    <span class="keyword">const</span> times = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">await</span> performanceTest(url, times)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<p>performanceTest.ts </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> puppeteer <span class="keyword">from</span> <span class="string">'puppeteer'</span>;</span><br><span class="line"></span><br><span class="line">interface Itiming &#123;</span><br><span class="line">  responseStart: number;</span><br><span class="line">  navigationStart: number;</span><br><span class="line">  responseEnd: number;</span><br><span class="line">  connectEnd: number;</span><br><span class="line">  connectStart: number;</span><br><span class="line">  domInteractive: number;</span><br><span class="line">  fetchStart: number;</span><br><span class="line">  domainLookupEnd: number;</span><br><span class="line">  domainLookupStart: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">performanceTest</span>(<span class="params">url: string, times: number</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> record = &#123;</span><br><span class="line">    whiteScreenTime: <span class="number">0</span>,</span><br><span class="line">    requestTime: <span class="number">0</span>,</span><br><span class="line">    tcpTime: <span class="number">0</span>,</span><br><span class="line">    tti: <span class="number">0</span>,</span><br><span class="line">    dnsTime: <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; times; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch(&#123; <span class="attr">headless</span>: <span class="literal">false</span> &#125;);</span><br><span class="line">    <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> page.goto(url);</span><br><span class="line">    <span class="keyword">const</span> res = <span class="built_in">JSON</span>.parse(<span class="keyword">await</span> page.evaluate(</span><br><span class="line">      () =&gt; <span class="built_in">JSON</span>.stringify(<span class="built_in">window</span>.performance.timing)</span><br><span class="line">    ))</span><br><span class="line">    <span class="keyword">const</span> timing: Itiming = res;</span><br><span class="line">    <span class="comment">// 等待保证页面加载完成</span></span><br><span class="line">    <span class="keyword">await</span> page.waitForTimeout(<span class="number">5000</span>);</span><br><span class="line">    <span class="comment">// 白屏时间</span></span><br><span class="line">    record.whiteScreenTime += timing.responseStart - timing.navigationStart;</span><br><span class="line">    <span class="comment">// 请求时间</span></span><br><span class="line">    record.requestTime += timing.responseEnd - timing.responseStart;</span><br><span class="line">    <span class="comment">// TCP建立连接耗时</span></span><br><span class="line">    record.tcpTime += timing.connectEnd - timing.connectStart;</span><br><span class="line">    <span class="comment">// tti</span></span><br><span class="line">    record.tti += timing.domInteractive - timing.fetchStart;</span><br><span class="line">    <span class="comment">// DNS</span></span><br><span class="line">    record.dnsTime += timing.domainLookupEnd - timing.domainLookupStart || <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">await</span> browser.close();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> res = &#123;</span><br><span class="line">    <span class="string">"DNS请求时间"</span>: record.dnsTime / times + <span class="string">'ms'</span>,</span><br><span class="line">    <span class="string">"TTI"</span>: record.tti / times + <span class="string">'ms'</span>,</span><br><span class="line">    <span class="string">"TCP建立连接耗时"</span>: record.dnsTime / times + <span class="string">'ms'</span>,</span><br><span class="line">    <span class="string">"白屏时间"</span>: record.whiteScreenTime / times + <span class="string">'ms'</span>,</span><br><span class="line">    <span class="string">"请求时间"</span>: record.requestTime / times + <span class="string">'ms'</span></span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>后续可以增加static扫描</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">请我喝杯咖啡？</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+        
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/yue-zi-yao">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/yueziyao">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://weekly.75.team/">奇舞周刊</a></span>
+        <span>/</span>
+        
+        <span><a href="https://developer.mozilla.org/">MDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.csdn.net/">CSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+    </div>
+</div>
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-yueziyao-github-io.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

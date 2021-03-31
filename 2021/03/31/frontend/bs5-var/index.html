@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Alex的博客，记录生活、工作中的点点滴滴，记录代码生涯沿途的风景。">
+    <meta name="keyword"  content="博客,前端,全栈">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        Bootstrap V5 色彩变量设置 - Alex的博客 | Alex&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script data-ad-client="ca-pub-5905321050599350" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53J9XSJ7ZF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-53J9XSJ7ZF');
+    </script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Alex</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+
+        <div class="index-about">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        Bootstrap V5 色彩变量设置
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-03-31 22:43:59</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#前端" title="前端">前端</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#Bootstrap V5" title="Bootstrap V5">Bootstrap V5</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#色彩变量" title="色彩变量">色彩变量</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <p>从v3开始就学习bootstrap的全局变量设置，对比v3在变量设置方面，v5还是有很大变化的。</p>
+<p>得益于sass版本的升级，bsV4 的变量设置开始就与前几个版本有较大不同，v5是进行了进一步升级。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Color system</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// scss-docs-start gray-color-variables</span></span><br><span class="line"><span class="variable">$white</span>:    <span class="number">#fff</span> !default;</span><br><span class="line"><span class="variable">$gray-100</span>: <span class="number">#f8f9fa</span> !default;</span><br><span class="line"><span class="variable">$gray-200</span>: <span class="number">#e9ecef</span> !default;</span><br><span class="line"><span class="variable">$gray-300</span>: <span class="number">#dee2e6</span> !default;</span><br><span class="line"><span class="variable">$gray-400</span>: <span class="number">#ced4da</span> !default;</span><br><span class="line"><span class="variable">$gray-500</span>: <span class="number">#adb5bd</span> !default;</span><br><span class="line"><span class="variable">$gray-600</span>: <span class="number">#6c757d</span> !default;</span><br><span class="line"><span class="variable">$gray-700</span>: <span class="number">#495057</span> !default;</span><br><span class="line"><span class="variable">$gray-800</span>: <span class="number">#343a40</span> !default;</span><br><span class="line"><span class="variable">$gray-900</span>: <span class="number">#212529</span> !default;</span><br><span class="line"><span class="variable">$black</span>:    <span class="number">#000</span> !default;</span><br><span class="line"></span><br><span class="line"><span class="comment">// scss-docs-start color-variables</span></span><br><span class="line"><span class="variable">$blue</span>:    <span class="number">#0d6efd</span> !default;</span><br><span class="line"><span class="variable">$indigo</span>:  <span class="number">#6610f2</span> !default;</span><br><span class="line"><span class="variable">$purple</span>:  <span class="number">#6f42c1</span> !default;</span><br><span class="line"><span class="variable">$pink</span>:    <span class="number">#d63384</span> !default;</span><br><span class="line"><span class="variable">$red</span>:     <span class="number">#dc3545</span> !default;</span><br><span class="line"><span class="variable">$orange</span>:  <span class="number">#fd7e14</span> !default;</span><br><span class="line"><span class="variable">$yellow</span>:  <span class="number">#ffc107</span> !default;</span><br><span class="line"><span class="variable">$green</span>:   <span class="number">#198754</span> !default;</span><br><span class="line"><span class="variable">$teal</span>:    <span class="number">#20c997</span> !default;</span><br><span class="line"><span class="variable">$cyan</span>:    <span class="number">#0dcaf0</span> !default;</span><br></pre></td></tr></table></figure>
+<p>以上就是bs v5所使用的所有颜色的基础色，主要分为灰色系和彩色系。这些颜色会作为基础色，在系统中进行使用。这样做一方面可以统一管理色彩，另一方面方便做系统色系的变更。</p>
+<p>例如，系统的色彩设置如下：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$primary</span>:       <span class="variable">$blue</span> !default;</span><br><span class="line"><span class="variable">$secondary</span>:     <span class="variable">$gray-600</span> !default;</span><br><span class="line"><span class="variable">$success</span>:       <span class="variable">$green</span> !default;</span><br><span class="line"><span class="variable">$info</span>:          <span class="variable">$cyan</span> !default;</span><br><span class="line"><span class="variable">$warning</span>:       <span class="variable">$yellow</span> !default;</span><br><span class="line"><span class="variable">$danger</span>:        <span class="variable">$red</span> !default;</span><br><span class="line"><span class="variable">$light</span>:         <span class="variable">$gray-100</span> !default;</span><br><span class="line"><span class="variable">$dark</span>:          <span class="variable">$gray-900</span> !default;</span><br></pre></td></tr></table></figure>
+<p>他们使用的基础色作为主题色的变量。</p>
+<p>另一方面，不同的 <code>$blue-xxx</code> 也是源自于基础的<code>$blue</code>,如下：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// fusv-disable</span></span><br><span class="line"><span class="variable">$blue-100</span>: tint-color(<span class="variable">$blue</span>, <span class="number">80%</span>) !default;</span><br><span class="line"><span class="variable">$blue-200</span>: tint-color(<span class="variable">$blue</span>, <span class="number">60%</span>) !default;</span><br><span class="line"><span class="variable">$blue-300</span>: tint-color(<span class="variable">$blue</span>, <span class="number">40%</span>) !default;</span><br><span class="line"><span class="variable">$blue-400</span>: tint-color(<span class="variable">$blue</span>, <span class="number">20%</span>) !default;</span><br><span class="line"><span class="variable">$blue-500</span>: <span class="variable">$blue</span> !default;</span><br><span class="line"><span class="variable">$blue-600</span>: shade-color(<span class="variable">$blue</span>, <span class="number">20%</span>) !default;</span><br><span class="line"><span class="variable">$blue-700</span>: shade-color(<span class="variable">$blue</span>, <span class="number">40%</span>) !default;</span><br><span class="line"><span class="variable">$blue-800</span>: shade-color(<span class="variable">$blue</span>, <span class="number">60%</span>) !default;</span><br><span class="line"><span class="variable">$blue-900</span>: shade-color(<span class="variable">$blue</span>, <span class="number">80%</span>) !default;</span><br></pre></td></tr></table></figure>
+<p>其中的变换方法已不再使用v3的变换，v3是使用SASS自带的 <code>darken()</code>和<code>lighten()</code>方法，进行基础色的变淡、变深。</p>
+<p>而v5版本，是使用上述<code>tint-color()</code>和<code>shade-color()</code>方法。在<code>_function.scss</code>源码中,是这样定义这两个方法的：</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// scss-docs-start color-functions</span></span><br><span class="line"><span class="comment">// Tint a color: mix a color with white</span></span><br><span class="line">@function tint-color(<span class="variable">$color</span>, <span class="variable">$weight</span>) &#123;</span><br><span class="line">  @return mix(white, <span class="variable">$color</span>, <span class="variable">$weight</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Shade a color: mix a color with black</span></span><br><span class="line">@function shade-color(<span class="variable">$color</span>, <span class="variable">$weight</span>) &#123;</span><br><span class="line">  @return mix(black, <span class="variable">$color</span>, <span class="variable">$weight</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>mix方法，参见 <a href="https://sass-lang.com/documentation/modules/color#mix" target="_blank" rel="noopener">https://sass-lang.com/documentation/modules/color#mix</a>  是混合色彩所用。</p>
+<p>后续我们再分析下其它变量的设置。</p>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">请我喝杯咖啡？</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+        
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/yue-zi-yao">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/yueziyao">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://weekly.75.team/">奇舞周刊</a></span>
+        <span>/</span>
+        
+        <span><a href="https://developer.mozilla.org/">MDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.csdn.net/">CSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+    </div>
+</div>
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-yueziyao-github-io.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>

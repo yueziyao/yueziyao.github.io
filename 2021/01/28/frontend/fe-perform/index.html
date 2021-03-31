@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Alex的博客，记录生活、工作中的点点滴滴，记录代码生涯沿途的风景。">
+    <meta name="keyword"  content="博客,前端,全栈">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        前端性能衡量标准 - Alex的博客 | Alex&#39;s Blog
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script data-ad-client="ca-pub-5905321050599350" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-53J9XSJ7ZF"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-53J9XSJ7ZF');
+    </script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar ">
+            <img src="/img/avatar.jpg" />
+        </div>
+        <div class="name">
+            <i>Alex</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li >
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li >
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li >
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li >
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-初识前端性能参数"><span class="toc-text">1. 初识前端性能参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-详解参数"><span class="toc-text">2. 详解参数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-FP-amp-FCP-First-Paint-amp-First-Contentful-Paint"><span class="toc-text">2.1 FP&amp;FCP - First Paint &amp; First Contentful Paint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-LCP-Largest-Contentful-Paint"><span class="toc-text">2.2 LCP - Largest Contentful Paint</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-TTI-Time-To-Interact"><span class="toc-text">2.3 TTI - Time To Interact</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-如何测试"><span class="toc-text">3. 如何测试</span></a></li></ol>
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input"/>
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+
+        <div class="index-about-mobile">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+
+        <div class="index-about">
+            <i> 既要低头撸码，也要仰望星空！ </i>
+        </div>
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        前端性能衡量标准
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2021-01-28 16:27:23</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#前端" title="前端">前端</a>
+        <span>/</span>
+        
+        <a class="tag" href="/tags/#性能优化" title="性能优化">性能优化</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+</span>
+    </div>
+    <div class="post-content ">
+        <h2 id="1-初识前端性能参数"><a href="#1-初识前端性能参数" class="headerlink" title="1. 初识前端性能参数"></a>1. 初识前端性能参数</h2><p>参考各种资料，各种文档，思考判断后觉得以下的标准更合理：</p>
+<ul>
+<li>页面加载速度——多快能出画面</li>
+<li>加载响应速度——多快能操作</li>
+<li>交互响应速度——操作的反馈速度</li>
+<li>视觉稳定性——界面稳定，元素位置不会因为加载而“乱动”</li>
+<li>交互平滑度——动画、过渡是否流畅</li>
+</ul>
+<p>上边这些都是感知上的，但无法通过这些指标来测量性能。所以我们以下边的一些公认的可量化的指标来测量：</p>
+<ul>
+<li>FCP：从页面开始加载到屏幕上呈现页面内容的时间。</li>
+<li>LCP：从页面开始加载到屏幕上最大的文本块或图像元素被渲染的时间。</li>
+<li>FID：测量从用户首次与您的网站进行交互到浏览器真正能够访问之间的时间。</li>
+<li>TTI：衡量从页面开始加载到可视化呈现之间，它的初始脚本（如果有）已加载以及可以可靠地快速响应用户输入的时间。</li>
+<li>TBT：测量主线程被阻塞足够长的时间以防止输入响应的FCP和TTI之间的总时间。</li>
+<li>CLS：衡量在页面开始加载到页面生命周期状态变为隐藏之间发生的所有意外布局转移的累积分数。</li>
+</ul>
+<h2 id="2-详解参数"><a href="#2-详解参数" class="headerlink" title="2. 详解参数"></a>2. 详解参数</h2><h3 id="2-1-FP-amp-FCP-First-Paint-amp-First-Contentful-Paint"><a href="#2-1-FP-amp-FCP-First-Paint-amp-First-Contentful-Paint" class="headerlink" title="2.1 FP&amp;FCP - First Paint &amp; First Contentful Paint"></a>2.1 FP&amp;FCP - First Paint &amp; First Contentful Paint</h3><p>一般用FCP来衡量即可，FP一般都在FCP之前：</p>
+<ul>
+<li>FP 记录页面第一次绘制像素的时间</li>
+<li>FCP 记录页面首次绘制文本、图片、非空白 Canvas 或 SVG 的时间</li>
+</ul>
+<p>FCP指标:</p>
+<ul>
+<li>0-2s: Good </li>
+<li>2-4s: Need Improvement </li>
+<li>4s以上: Poor </li>
+</ul>
+<h3 id="2-2-LCP-Largest-Contentful-Paint"><a href="#2-2-LCP-Largest-Contentful-Paint" class="headerlink" title="2.2 LCP - Largest Contentful Paint"></a>2.2 LCP - Largest Contentful Paint</h3><p>LCP指标代表的是视窗最大可见图片或者文本块的渲染时间。</p>
+<p>这个性能指标，可以测试用户感知到的页面加载速度，更可以让用户感受到这个页面的可用性。</p>
+<p><img src="lcp.png" alt="web LCP"></p>
+<ul>
+<li>LCP的官方api：<a href="https://wicg.github.io/largest-contentful-paint/#sec-largest-contentful-paint-interface" target="_blank" rel="noopener">https://wicg.github.io/largest-contentful-paint/#sec-largest-contentful-paint-interface</a></li>
+<li>插件：<a href="https://github.com/GoogleChrome/web-vitals" target="_blank" rel="noopener">https://github.com/GoogleChrome/web-vitals</a></li>
+</ul>
+<h3 id="2-3-TTI-Time-To-Interact"><a href="#2-3-TTI-Time-To-Interact" class="headerlink" title="2.3 TTI - Time To Interact"></a>2.3 TTI - Time To Interact</h3><p>TTI指的是页面可交互的时间。简单的说呢，就是页面从加载开始，到最快能操作的时间。</p>
+<p>在谷歌浏览器上没有办法直接看到，但是可以使用api计算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timing = <span class="built_in">window</span>.performance;</span><br><span class="line"><span class="keyword">var</span> tti = timing.domInteractive - timing.fetchStart;</span><br></pre></td></tr></table></figure>
+<h2 id="3-如何测试"><a href="#3-如何测试" class="headerlink" title="3. 如何测试"></a>3. 如何测试</h2><p>1.可以使用谷歌的performce，来查看性能。</p>
+<p><img src="chrome.png" alt="谷歌开发工具"></p>
+<p>Timings 里<code>FP</code> <code>FCP</code> <code>LCP</code> <code>DCL</code> 等参数，做重点分析。</p>
+<ol start="2">
+<li>可以使用爬虫来抓，请见下篇文章<a href="http://yueziyao.site/2021/01/27/fe-spider/">《前端性能爬虫方案》</a></li>
+</ol>
+<blockquote>
+<p>参考：<br><a href="https://web.dev/user-centric-performance-metrics/#user-centric_performance_metrics" target="_blank" rel="noopener">《以用户为中心的性能指标》- Google</a><br><a href="https://developer.yahoo.com/performance/rules.html?guccounter=1#num_http" target="_blank" rel="noopener">《Best Practices for Speeding Up Your Web Site》- yahoo</a><br><a href="https://segmentfault.com/a/1190000022744550" target="_blank" rel="noopener">《解读新一代 Web 性能体验和质量指标》- segmentfault</a></p>
+</blockquote>
+
+        
+            <div class="donate-container">
+    <div class="donate-button">
+        <button id="donate-button">请我喝杯咖啡？</button>
+    </div>
+    <div class="donate-img-container hide" id="donate-img-container">
+        <img id="donate-img" src="" data-src="/img/donate.jpg">
+        <p> 感谢鼓励 </p>
+    </div>
+</div>
+        
+        <br />
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+        
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+        <li>
+            <a target="_blank" href="https://www.zhihu.com/people/yue-zi-yao">
+                            <span class="fa-stack fa-lg">
+                                 <i class="iconfont icon-zhihu"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+        
+
+        
+        <li>
+            <a target="_blank"  href="https://github.com/yueziyao">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        <span>/</span>
+        
+        <span><a href="https://weekly.75.team/">奇舞周刊</a></span>
+        <span>/</span>
+        
+        <span><a href="https://developer.mozilla.org/">MDN</a></span>
+        <span>/</span>
+        
+        <span><a href="https://www.csdn.net/">CSDN</a></span>
+        <span>/</span>
+        
+    </p>
+    
+    <p>
+        <span id="busuanzi_container_site_pv">
+            <span id="busuanzi_value_site_pv"></span>PV
+        </span>
+        <span id="busuanzi_container_site_uv">
+            <span id="busuanzi_value_site_uv"></span>UV
+        </span>
+        Created By <a href="https://hexo.io/">Hexo</a>  Theme <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a></p>
+</footer>
+
+
+
+    </div>
+</div>
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://https-yueziyao-github-io.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+
+
+
+</html>
